@@ -19,6 +19,10 @@ dependencies {
     /*redis*/
     compile 'org.springframework.boot:spring-boot-starter-data-redis:2.0.3.RELEASE'
     compile 'redis.clients:jedis'
+
+    // redis 分布式
+    compile 'org.redisson:redisson:3.12.5'
+
 }
 
 test {
