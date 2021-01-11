@@ -2,11 +2,6 @@ server:
   port: 9003
 spring:
   redis:
-    pool:
-      max-idle: 10
-      min-idle: 5
-      max-wait: 2000
-      max-active: 10
     timeout: 2000
     host: 127.0.0.1
     port: 6379
