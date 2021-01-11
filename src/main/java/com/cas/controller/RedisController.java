@@ -129,6 +129,7 @@ public class RedisController {
     @PostMapping("/publish")
     @ResponseBody
     public String publish() {
+//        redisTemplate.opsForValue().set("key1", "value1", 10, TimeUnit.SECONDS);
         redisTemplate.convertAndSend("topicl", "发布订阅测试信息");
         return "ok";
     }
@@ -136,8 +137,8 @@ public class RedisController {
     /**
      * 测试简单的Lua脚本
      */
-    @PostMapping("/lua")
     @ResponseBody
+    @PostMapping("/lua")
     public String lua() {
         DefaultRedisScript<String> rs = new DefaultRedisScript<>();
         // 设置脚本
