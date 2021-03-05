@@ -7,13 +7,16 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -151,5 +154,45 @@ public class RedisController {
         return str;
     }
 
+    @ResponseBody
+    @PostMapping("/list")
+    public String list() {
+        redisTemplate.opsForList().leftPush("list", "a");
+        redisTemplate.opsForList().leftPush("list", "b");
+        redisTemplate.opsForList().leftPush("list", "c");
+        List<String> list = redisTemplate.opsForList().range("list", 0, 10);
+        assert list != null;
+        list.forEach(System.out::println);
+        return "ok";
+    }
+
+    @ResponseBody
+    @PostMapping("/set")
+    public String set() {
+        redisTemplate.opsForSet().add("set", "a", "b", "c", "c");
+        Set<String> set = redisTemplate.opsForSet().members("set");
+        assert set != null;
+        set.forEach(System.out::println);
+        return "ok";
+    }
+
+    @ResponseBody
+    @PostMapping("/sortSet")
+    public String sortSet() {
+        redisTemplate.opsForZSet().add("sort", "a", 1);
+        redisTemplate.opsForZSet().add("sort", "b", 2);
+        redisTemplate.opsForZSet().add("sort", "b", 3);
+        Set<String> sort = redisTemplate.opsForZSet().range("sort", 0, 10);
+        assert sort != null;
+        sort.forEach(System.out::println);
+        return "ok";
+    }
+
+    @ResponseBody
+    @PostMapping("/test")
+    public String test(HttpServletRequest request) {
+        System.out.println(request.getRemoteHost());
+        return "ok";
+    }
 
 }
