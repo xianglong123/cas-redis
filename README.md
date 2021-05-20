@@ -26,3 +26,12 @@ http://doc.redisfans.com/
     spring.redis.pool.min-idle=0
     # 连接超时时间（毫秒）
     spring.redis.timeout=0
+
+## spring-session和springboot整合博客
+    https://developer.aliyun.com/article/182676
+    
+    为什么要有spring-session，我们知道单机的时候session可以存储一些数据，这样每次用户请求我们都能使用这些数据，但是我们如果采用分布式去部署应用，那么
+    session就不在一起，可能负载的时候就会拿不到数据，导致问题。那么我们怎么去解决这一困境呢？
+    答：spring提供了组建，spring-session就是用来帮助我们来解决如上问题，我们知道session是存储在jvm的堆中的，我们如果将这个存储区域抽取出来进行统一管理
+    的话就可以解决session不同步的问题，让jvm找session去redis或者jdbc中查询，这样就可以解决上述问题。至此spring-session的功能介绍完毕，实现的demo在这个项目
+    中，请查收

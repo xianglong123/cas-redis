@@ -20,6 +20,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.0.3.RELEASE'
     implementation 'redis.clients:jedis'
 
+    /**
+     * spring-session
+     */
+    implementation 'org.springframework.session:spring-session-data-redis:2.5.0'
+
     // redis 分布式
     implementation 'org.redisson:redisson:3.12.5'
 

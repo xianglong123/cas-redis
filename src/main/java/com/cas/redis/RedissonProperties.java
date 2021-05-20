@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
  * @version: V1.0
  * @review:
  */
-//@Configuration
-//@ConfigurationProperties(prefix = "redisson")
+@Configuration
+@ConfigurationProperties(prefix = "redisson")
 public class RedissonProperties {
 
     private int timeout = 3000;

@@ -8,12 +8,15 @@ import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.Instant;
 import java.util.List;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class RedisController {
     /**
      * 测试redis
      */
-    @PostMapping("/redis")
+    @GetMapping("/redis")
     @ResponseBody
     public String redis(String num) {
         redisTemplate.opsForValue().set("key" + num, "value" + num);
@@ -193,6 +196,35 @@ public class RedisController {
     public String test(HttpServletRequest request) {
         System.out.println(request.getRemoteHost());
         return "ok";
+    }
+
+    /**
+     * 测试spring-session
+     * @param request
+     * @param val
+     * @return
+     */
+    @GetMapping("/login/{val}")
+    public String login(HttpServletRequest request, @PathVariable("val")String val) {
+        HttpSession session = request.getSession();
+        session.setAttribute("name", val);
+        System.out.println("create session, sessionId is:" + session.getId());
+        return session.getAttribute("name").toString();
+    }
+
+
+    /**
+     * 测试spring-session
+     * @param request
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Object name = session.getAttribute("name");
+        System.out.println(name);
+        session.invalidate();
+        return name.toString();
     }
 
 }

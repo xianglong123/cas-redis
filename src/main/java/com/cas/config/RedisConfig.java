@@ -8,6 +8,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * @author: xianglong[1391086179@qq.com]
  * @date: 19:33 2020-02-16
@@ -18,7 +21,6 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisConfig {
 
     private RedisConnectionFactory redisConnectionFactory = null;
-
 //    @Bean(name = "RedisConnectionFactory")
 //    public RedisConnectionFactory initRedisConnectionFactory() {
 //        if(this.redisConnectionFactory != null) {
