@@ -1,4 +1,4 @@
-package com.cas.config;
+package com.cas.listener;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;

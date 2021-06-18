@@ -36,7 +36,6 @@ public class RedissonAutoConfiguration {
 //        List<String> addressList = new ArrayList<>();
 //        Arrays.asList(strings).forEach(address -> addressList.add("redis://" + address));
         SingleServerConfig serverConfig = config.useSingleServer()
-
                 .setAddress(redissonProperties.getAddress())
                 .setTimeout(redissonProperties.getTimeout())
                 .setConnectionPoolSize(redissonProperties.getConnectionPoolSize())
