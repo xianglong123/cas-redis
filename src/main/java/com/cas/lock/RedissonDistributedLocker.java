@@ -1,4 +1,4 @@
-package com.cas.redis;
+package com.cas.lock;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

@@ -36,4 +36,36 @@ http://doc.redisfans.com/
     的话就可以解决session不同步的问题，让jvm找session去redis或者jdbc中查询，这样就可以解决上述问题。至此spring-session的功能介绍完毕，实现的demo在这个项目
     中，请查收
 
-## 
+## 指令
+    
+```bash
+xianglong@123 ~ % redis-cli
+127.0.0.1:6379> set name xianglong
+OK
+127.0.0.1:6379> get name
+"xianglong"
+127.0.0.1:6379> getrange name 0 2
+"xia"
+127.0.0.1:6379> getset name xl
+"xianglong"
+127.0.0.1:6379> get name
+"xl"
+127.0.0.1:6379> getbit name 2
+(integer) 1
+127.0.0.1:6379> getbit name 1
+(integer) 1
+127.0.0.1:6379> set a 1
+OK
+127.0.0.1:6379> incr a
+(integer) 2
+127.0.0.1:6379> get a
+"2"
+127.0.0.1:6379> incr a
+(integer) 3
+127.0.0.1:6379> decr a
+(integer) 2
+127.0.0.1:6379> get a
+"2"
+127.0.0.1:6379> 
+```
+

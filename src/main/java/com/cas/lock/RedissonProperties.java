@@ -1,4 +1,4 @@
-package com.cas.redis;
+package com.cas.lock;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

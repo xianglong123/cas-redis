@@ -1,6 +1,6 @@
 package com.cas.utils;
 
-import com.cas.redis.DistributedLocker;
+import com.cas.lock.DistributedLocker;
 import org.redisson.api.RLock;
 
 import java.util.concurrent.TimeUnit;
