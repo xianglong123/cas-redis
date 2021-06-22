@@ -32,13 +32,19 @@ public class HashTest {
             put("age", "25");
         }});
 
+        Map<String, String> map = new HashMap<String, String>() {{
+           put("name", "175");
+        }};
+
         log.warn("指令【hincrBy】: 为哈希表 key 中的指定字段的整数值加上增量 increment ");
         System.out.println(jedis.hincrBy(key, "age", 25));
         log.warn("指令【hlen】: 获取哈希表中字段的数量");
         System.out.println(jedis.hlen(key));
         log.warn("指令【hmget】: 获取所有给定字段的值");
         jedis.hmget(key, "name", "age").forEach(System.out::println);
-        log.warn("指令【】");
+        log.warn("指令【hmset】: 同时将多个 field-value (域-值)对设置到哈希表 key 中。");
+        jedis.hmset(key, map); // 只能修改不能新增
+        jedis.hmget(key, "name", "age").forEach(System.out::println);
 
     }
 

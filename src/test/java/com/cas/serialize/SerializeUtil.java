@@ -1,7 +1,6 @@
 package com.cas.serialize;
 
 import com.cas.Base;
-import org.springframework.data.redis.serializer.SerializationException;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
