@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
@@ -46,13 +45,12 @@ public class RedisConfig {
     @Bean(name = "redisTemplate")
     public RedisTemplate<Object, Object> initRedisTemplate() {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
-        // RedisTemplate 会自动初始化 StringRedisSerializer 所以这里直接获取
-        RedisSerializer stringRedisSerializer = redisTemplate.getStringSerializer();
-        //&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32;&#x5E8F;&#x5217;&#x5316;&#x5668;&#xFF0C;&#x8FD9;&#x91CC;spring&#x5C31;&#x4F1A;&#x628A;redis&#x7684;key&#x5F53;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;
-        redisTemplate.setKeySerializer(stringRedisSerializer);
-        redisTemplate.setValueSerializer(stringRedisSerializer);
-        redisTemplate.setHashKeySerializer(stringRedisSerializer);
-        redisTemplate.setHashValueSerializer(stringRedisSerializer);
+        /**
+         * 这里重新定义了编码序列化配置，可以支持对象的存储
+         */
+        redisTemplate.setDefaultSerializer(new ObjectRedisSerializer());
+        redisTemplate.setKeySerializer(new ObjectRedisSerializer());
+        redisTemplate.setValueSerializer(new ObjectRedisSerializer());
         redisTemplate.setConnectionFactory(initRedisConnectionFactory());
         return redisTemplate;
     }
