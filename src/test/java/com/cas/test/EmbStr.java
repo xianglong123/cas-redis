@@ -3,7 +3,6 @@ package com.cas.test;
 import com.cas.Base;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 public class EmbStr {
 

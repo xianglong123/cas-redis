@@ -45,10 +45,7 @@ public class HashTest {
         log.warn("指令【hmset】: 同时将多个 field-value (域-值)对设置到哈希表 key 中。");
         jedis.hmset(key, map); // 只能修改不能新增
         jedis.hmget(key, "name", "age").forEach(System.out::println);
-
     }
-
-
 
     public static void test1(Jedis jedis) {
         log.warn("指令【hget】");
@@ -70,7 +67,6 @@ public class HashTest {
         for (String key : map.keySet()) {
             System.out.println(String.format("Map 属性[%s] = %s", key, map.get(key)));
         }
-
     }
 
     /**

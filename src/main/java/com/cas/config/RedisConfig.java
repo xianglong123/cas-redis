@@ -48,7 +48,7 @@ public class RedisConfig {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         // RedisTemplate 会自动初始化 StringRedisSerializer 所以这里直接获取
         RedisSerializer stringRedisSerializer = redisTemplate.getStringSerializer();
-        //设置字符串序列化器，这里spring就会把redis的key当作字符串处理
+        //&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32;&#x5E8F;&#x5217;&#x5316;&#x5668;&#xFF0C;&#x8FD9;&#x91CC;spring&#x5C31;&#x4F1A;&#x628A;redis&#x7684;key&#x5F53;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;
         redisTemplate.setKeySerializer(stringRedisSerializer);
         redisTemplate.setValueSerializer(stringRedisSerializer);
         redisTemplate.setHashKeySerializer(stringRedisSerializer);
