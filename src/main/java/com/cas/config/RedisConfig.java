@@ -1,5 +1,6 @@
 package com.cas.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -33,7 +34,6 @@ public class RedisConfig {
         poolConfig.setMaxWaitMillis(2000);
         //创建 Jedis 连接工厂
         JedisConnectionFactory connectionFactory = new JedisConnectionFactory(poolConfig);
-
         this.redisConnectionFactory = connectionFactory;
         return redisConnectionFactory;
     }
@@ -42,9 +42,9 @@ public class RedisConfig {
      * 依赖注入 RedisTemplate
      * @return
      */
-    @Bean(name = "redisTemplate")
-    public RedisTemplate<Object, Object> initRedisTemplate() {
-        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+    @Bean(name = "cacheRedisTemplate")
+    public RedisTemplate<String, Object> initRedisTemplate() {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         /**
          * 这里重新定义了编码序列化配置，可以支持对象的存储
          */

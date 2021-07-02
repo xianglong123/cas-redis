@@ -1,5 +1,6 @@
 package com.cas.controller;
 
+import com.cas.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.Instant;
@@ -34,17 +36,10 @@ public class RedisController {
 
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
-    /**
-     * 测试redis
-     */
-    @GetMapping("/redis")
-    @ResponseBody
-    public String redis(String num) {
-        redisTemplate.opsForValue().set("key" + num, "value" + num);
-        return "ok";
-    }
+    @Resource
+    private RedisTemplate<String, Object> cacheRedisTemplate;
 
     /**
      * 测试redis
@@ -153,42 +148,7 @@ public class RedisController {
         rs.setResultType(String.class);
         RedisSerializer<String> stringRedisSerializer = redisTemplate.getStringSerializer();
         // 执行Lua脚本
-        String str = (String) redisTemplate.execute(rs, stringRedisSerializer, stringRedisSerializer, null);
-        return str;
-    }
-
-    @ResponseBody
-    @PostMapping("/list")
-    public String list() {
-        redisTemplate.opsForList().leftPush("list", "a");
-        redisTemplate.opsForList().leftPush("list", "b");
-        redisTemplate.opsForList().leftPush("list", "c");
-        List<String> list = redisTemplate.opsForList().range("list", 0, 10);
-        assert list != null;
-        list.forEach(System.out::println);
-        return "ok";
-    }
-
-    @ResponseBody
-    @PostMapping("/set")
-    public String set() {
-        redisTemplate.opsForSet().add("set", "a", "b", "c", "c");
-        Set<String> set = redisTemplate.opsForSet().members("set");
-        assert set != null;
-        set.forEach(System.out::println);
-        return "ok";
-    }
-
-    @ResponseBody
-    @PostMapping("/sortSet")
-    public String sortSet() {
-        redisTemplate.opsForZSet().add("sort", "a", 1);
-        redisTemplate.opsForZSet().add("sort", "b", 2);
-        redisTemplate.opsForZSet().add("sort", "b", 3);
-        Set<String> sort = redisTemplate.opsForZSet().range("sort", 0, 10);
-        assert sort != null;
-        sort.forEach(System.out::println);
-        return "ok";
+        return redisTemplate.execute(rs, stringRedisSerializer, stringRedisSerializer, null);
     }
 
     @ResponseBody
@@ -225,6 +185,19 @@ public class RedisController {
         System.out.println(name);
         session.invalidate();
         return name.toString();
+    }
+
+    /**
+     * 存储对象，序列化和反序列化
+     * @return
+     */
+    @GetMapping("/se")
+    public String se() {
+        User user = new User("xl", 24);
+        cacheRedisTemplate.opsForValue().set("user", user);
+        User u = (User) cacheRedisTemplate.opsForValue().get("user");
+        assert u != null;
+        return u.toString();
     }
 
 }
