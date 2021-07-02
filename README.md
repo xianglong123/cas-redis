@@ -69,3 +69,6 @@ OK
 127.0.0.1:6379> 
 ```
 
+[redis序列化和反序列化](./src/main/java/com/cas/config/RedisConfig.java)
+[swagger配置](./src/main/java/com/cas/config/Swagger2Config.java)
+[redis注入自定义RedisTemplate](./src/main/java/com/cas/config/RedisConfig.java)

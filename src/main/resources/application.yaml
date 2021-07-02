@@ -19,8 +19,3 @@ spring:
         max-idle: 10
         min-idle: 10
     database: 0
-xl:
-  redis:
-    timeout: 2000
-    host: 127.0.0.1
-    port: 6379
