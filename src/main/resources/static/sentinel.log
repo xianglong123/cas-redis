@@ -1,0 +1,54 @@
+[root@localhost bin]# ./redis-sentinel conf/sentinel.conf
+13200:X 04 Jul 2021 13:42:58.508 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+13200:X 04 Jul 2021 13:42:58.508 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=13200, just started
+13200:X 04 Jul 2021 13:42:58.508 # Configuration loaded
+13200:X 04 Jul 2021 13:42:58.509 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 5.0.7 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in sentinel mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26379
+ |    `-._   `._    /     _.-'    |     PID: 13200
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+13200:X 04 Jul 2021 13:42:58.510 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+13200:X 04 Jul 2021 13:42:58.511 # Sentinel ID is 99a601758b324c5c5df948c11807bfd45b12d16d
+13200:X 04 Jul 2021 13:42:58.512 # +monitor master myredis 127.0.0.1 6379 quorum 1
+13200:X 04 Jul 2021 13:42:58.513 * +slave slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:42:58.513 * +slave slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:43:37.972 # +sdown slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:43:54.503 * +reboot slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:43:54.556 # -sdown slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:04.557 * +convert-to-slave slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:28.960 # +sdown master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:28.960 # +odown master myredis 127.0.0.1 6379 #quorum 1/1
+13200:X 04 Jul 2021 13:44:28.960 # +new-epoch 1
+13200:X 04 Jul 2021 13:44:28.960 # +try-failover master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:28.961 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 1
+13200:X 04 Jul 2021 13:44:28.961 # +elected-leader master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:28.961 # +failover-state-select-slave master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.028 # +selected-slave slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.028 * +failover-state-send-slaveof-noone slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.129 * +failover-state-wait-promotion slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.517 # +promoted-slave slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.517 # +failover-state-reconf-slaves master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:29.600 * +slave-reconf-sent slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:30.172 * +slave-reconf-inprog slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:30.172 * +slave-reconf-done slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:30.261 # +failover-end master myredis 127.0.0.1 6379
+13200:X 04 Jul 2021 13:44:30.261 # +switch-master myredis 127.0.0.1 6379 127.0.0.1 6380
+13200:X 04 Jul 2021 13:44:30.261 * +slave slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6380
+13200:X 04 Jul 2021 13:44:30.261 * +slave slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+13200:X 04 Jul 2021 13:45:00.325 # +sdown slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+13200:X 04 Jul 2021 13:45:23.594 # -sdown slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+13200:X 04 Jul 2021 13:45:33.611 * +convert-to-slave slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380

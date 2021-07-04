@@ -1,0 +1,78 @@
+15331:X 04 Jul 2021 14:22:32.921 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+15331:X 04 Jul 2021 14:22:32.921 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=15331, just started
+15331:X 04 Jul 2021 14:22:32.921 # Configuration loaded
+15332:X 04 Jul 2021 14:22:32.923 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+15332:X 04 Jul 2021 14:22:32.924 * Running mode=sentinel, port=26380.
+15332:X 04 Jul 2021 14:22:32.924 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+15332:X 04 Jul 2021 14:22:32.924 # Sentinel ID is 99a601758b324c5c5df948c11807bfd45b12d16d
+15332:X 04 Jul 2021 14:22:32.924 # +monitor master myredis 127.0.0.1 6380 quorum 1
+15332:X 04 Jul 2021 14:23:02.934 # +sdown master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:23:02.934 # +odown master myredis 127.0.0.1 6380 #quorum 1/1
+15332:X 04 Jul 2021 14:23:02.934 # +new-epoch 2
+15332:X 04 Jul 2021 14:23:02.934 # +try-failover master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:23:02.936 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 2
+15332:X 04 Jul 2021 14:23:02.936 # +elected-leader master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:23:02.936 # +failover-state-select-slave master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:23:03.005 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:23:03.072 # Next failover delay: I will not start a failover before Sun Jul  4 14:29:03 2021
+15332:X 04 Jul 2021 14:29:03.721 # +new-epoch 3
+15332:X 04 Jul 2021 14:29:03.721 # +try-failover master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:29:03.723 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 3
+15332:X 04 Jul 2021 14:29:03.723 # +elected-leader master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:29:03.723 # +failover-state-select-slave master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:29:03.814 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+15332:X 04 Jul 2021 14:29:03.873 # Next failover delay: I will not start a failover before Sun Jul  4 14:35:04 2021
+15831:X 04 Jul 2021 14:31:54.638 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+15831:X 04 Jul 2021 14:31:54.638 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=15831, just started
+15831:X 04 Jul 2021 14:31:54.638 # Configuration loaded
+15832:X 04 Jul 2021 14:31:54.639 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+15832:X 04 Jul 2021 14:31:54.640 * Running mode=sentinel, port=26380.
+15832:X 04 Jul 2021 14:31:54.640 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+15832:X 04 Jul 2021 14:31:54.641 # Sentinel ID is 99a601758b324c5c5df948c11807bfd45b12d16d
+15832:X 04 Jul 2021 14:31:54.641 # +monitor master myredis 127.0.0.1 6380 quorum 1
+15832:X 04 Jul 2021 14:32:24.644 # +sdown master myredis 127.0.0.1 6380
+15832:X 04 Jul 2021 14:32:24.644 # +odown master myredis 127.0.0.1 6380 #quorum 1/1
+15832:X 04 Jul 2021 14:32:24.644 # +new-epoch 4
+15832:X 04 Jul 2021 14:32:24.644 # +try-failover master myredis 127.0.0.1 6380
+15832:X 04 Jul 2021 14:32:24.646 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 4
+15832:X 04 Jul 2021 14:32:24.646 # +elected-leader master myredis 127.0.0.1 6380
+15832:X 04 Jul 2021 14:32:24.646 # +failover-state-select-slave master myredis 127.0.0.1 6380
+15832:X 04 Jul 2021 14:32:24.718 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+15832:X 04 Jul 2021 14:32:24.785 # Next failover delay: I will not start a failover before Sun Jul  4 14:38:24 2021
+16001:X 04 Jul 2021 14:35:02.296 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+16001:X 04 Jul 2021 14:35:02.296 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=16001, just started
+16001:X 04 Jul 2021 14:35:02.296 # Configuration loaded
+16002:X 04 Jul 2021 14:35:02.298 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+16002:X 04 Jul 2021 14:35:02.299 * Running mode=sentinel, port=26380.
+16002:X 04 Jul 2021 14:35:02.299 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+16002:X 04 Jul 2021 14:35:02.300 # Sentinel ID is e8b010139203e3c1fc2e3ef524ee5b292249dccf
+16002:X 04 Jul 2021 14:35:02.300 # +monitor master myredis 127.0.0.1 6380 quorum 1
+16002:X 04 Jul 2021 14:35:06.793 * +sentinel sentinel 52d1ac58505a45525c704dd2751b729719d9233e 127.0.0.1 26381 @ myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.322 # +sdown master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.322 # +odown master myredis 127.0.0.1 6380 #quorum 1/1
+16002:X 04 Jul 2021 14:35:32.322 # +new-epoch 5
+16002:X 04 Jul 2021 14:35:32.322 # +try-failover master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.324 # +vote-for-leader e8b010139203e3c1fc2e3ef524ee5b292249dccf 5
+16002:X 04 Jul 2021 14:35:32.327 # 52d1ac58505a45525c704dd2751b729719d9233e voted for e8b010139203e3c1fc2e3ef524ee5b292249dccf 5
+16002:X 04 Jul 2021 14:35:32.408 # +elected-leader master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.408 # +failover-state-select-slave master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.462 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:32.552 # Next failover delay: I will not start a failover before Sun Jul  4 14:41:32 2021
+16002:X 04 Jul 2021 14:35:49.078 # -sdown master myredis 127.0.0.1 6380
+16002:X 04 Jul 2021 14:35:49.078 # -odown master myredis 127.0.0.1 6380
+16159:X 04 Jul 2021 14:37:46.992 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+16159:X 04 Jul 2021 14:37:46.992 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=16159, just started
+16159:X 04 Jul 2021 14:37:46.992 # Configuration loaded
+16160:X 04 Jul 2021 14:37:46.994 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+16160:X 04 Jul 2021 14:37:46.994 * Running mode=sentinel, port=26380.
+16160:X 04 Jul 2021 14:37:46.994 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+16160:X 04 Jul 2021 14:37:46.995 # Sentinel ID is e8b010139203e3c1fc2e3ef524ee5b292249dccf
+16160:X 04 Jul 2021 14:37:46.995 # +monitor master myredis 127.0.0.1 6380 quorum 2
+16160:X 04 Jul 2021 14:38:42.685 # +sdown master myredis 127.0.0.1 6380
+16160:X 04 Jul 2021 14:38:42.769 # +new-epoch 6
+16160:X 04 Jul 2021 14:38:42.770 # +vote-for-leader 52d1ac58505a45525c704dd2751b729719d9233e 6
+16160:X 04 Jul 2021 14:38:43.314 # +config-update-from sentinel 52d1ac58505a45525c704dd2751b729719d9233e 127.0.0.1 26381 @ myredis 127.0.0.1 6380
+16160:X 04 Jul 2021 14:38:43.314 # +switch-master myredis 127.0.0.1 6380 127.0.0.1 6381
+16160:X 04 Jul 2021 14:38:43.314 * +slave slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6381
+16160:X 04 Jul 2021 14:38:43.314 * +slave slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6381
+16160:X 04 Jul 2021 14:39:13.385 # +sdown slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6381

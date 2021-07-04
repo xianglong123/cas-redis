@@ -1,0 +1,71 @@
+15338:X 04 Jul 2021 14:22:35.896 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+15338:X 04 Jul 2021 14:22:35.896 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=15338, just started
+15338:X 04 Jul 2021 14:22:35.896 # Configuration loaded
+15339:X 04 Jul 2021 14:22:35.897 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+15339:X 04 Jul 2021 14:22:35.898 * Running mode=sentinel, port=26381.
+15339:X 04 Jul 2021 14:22:35.898 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+15339:X 04 Jul 2021 14:22:35.898 # Sentinel ID is 99a601758b324c5c5df948c11807bfd45b12d16d
+15339:X 04 Jul 2021 14:22:35.898 # +monitor master myredis 127.0.0.1 6380 quorum 1
+15339:X 04 Jul 2021 14:23:05.963 # +sdown master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:23:05.963 # +odown master myredis 127.0.0.1 6380 #quorum 1/1
+15339:X 04 Jul 2021 14:23:05.963 # +new-epoch 2
+15339:X 04 Jul 2021 14:23:05.963 # +try-failover master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:23:05.965 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 2
+15339:X 04 Jul 2021 14:23:05.966 # +elected-leader master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:23:05.966 # +failover-state-select-slave master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:23:06.032 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:23:06.133 # Next failover delay: I will not start a failover before Sun Jul  4 14:29:06 2021
+15339:X 04 Jul 2021 14:29:06.473 # +new-epoch 3
+15339:X 04 Jul 2021 14:29:06.473 # +try-failover master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:29:06.476 # +vote-for-leader 99a601758b324c5c5df948c11807bfd45b12d16d 3
+15339:X 04 Jul 2021 14:29:06.476 # +elected-leader master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:29:06.476 # +failover-state-select-slave master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:29:06.535 # -failover-abort-no-good-slave master myredis 127.0.0.1 6380
+15339:X 04 Jul 2021 14:29:06.606 # Next failover delay: I will not start a failover before Sun Jul  4 14:35:07 2021
+16008:X 04 Jul 2021 14:35:04.766 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+16008:X 04 Jul 2021 14:35:04.766 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=16008, just started
+16008:X 04 Jul 2021 14:35:04.766 # Configuration loaded
+16009:X 04 Jul 2021 14:35:04.768 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+16009:X 04 Jul 2021 14:35:04.769 * Running mode=sentinel, port=26381.
+16009:X 04 Jul 2021 14:35:04.769 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+16009:X 04 Jul 2021 14:35:04.770 # Sentinel ID is 52d1ac58505a45525c704dd2751b729719d9233e
+16009:X 04 Jul 2021 14:35:04.770 # +monitor master myredis 127.0.0.1 6380 quorum 1
+16009:X 04 Jul 2021 14:35:06.302 * +sentinel sentinel e8b010139203e3c1fc2e3ef524ee5b292249dccf 127.0.0.1 26380 @ myredis 127.0.0.1 6380
+16009:X 04 Jul 2021 14:35:06.305 # +new-epoch 4
+16009:X 04 Jul 2021 14:35:32.326 # +new-epoch 5
+16009:X 04 Jul 2021 14:35:32.327 # +vote-for-leader e8b010139203e3c1fc2e3ef524ee5b292249dccf 5
+16009:X 04 Jul 2021 14:35:34.786 # +sdown master myredis 127.0.0.1 6380
+16009:X 04 Jul 2021 14:35:34.786 # +odown master myredis 127.0.0.1 6380 #quorum 1/1
+16009:X 04 Jul 2021 14:35:34.786 # Next failover delay: I will not start a failover before Sun Jul  4 14:41:32 2021
+16009:X 04 Jul 2021 14:35:49.749 # -sdown master myredis 127.0.0.1 6380
+16009:X 04 Jul 2021 14:35:49.749 # -odown master myredis 127.0.0.1 6380
+16166:X 04 Jul 2021 14:37:49.307 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+16166:X 04 Jul 2021 14:37:49.307 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=16166, just started
+16166:X 04 Jul 2021 14:37:49.307 # Configuration loaded
+16167:X 04 Jul 2021 14:37:49.309 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+16167:X 04 Jul 2021 14:37:49.310 * Running mode=sentinel, port=26381.
+16167:X 04 Jul 2021 14:37:49.310 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+16167:X 04 Jul 2021 14:37:49.310 # Sentinel ID is 52d1ac58505a45525c704dd2751b729719d9233e
+16167:X 04 Jul 2021 14:37:49.310 # +monitor master myredis 127.0.0.1 6380 quorum 2
+16167:X 04 Jul 2021 14:38:42.709 # +sdown master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.765 # +odown master myredis 127.0.0.1 6380 #quorum 2/2
+16167:X 04 Jul 2021 14:38:42.765 # +new-epoch 6
+16167:X 04 Jul 2021 14:38:42.765 # +try-failover master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.768 # +vote-for-leader 52d1ac58505a45525c704dd2751b729719d9233e 6
+16167:X 04 Jul 2021 14:38:42.770 # e8b010139203e3c1fc2e3ef524ee5b292249dccf voted for 52d1ac58505a45525c704dd2751b729719d9233e 6
+16167:X 04 Jul 2021 14:38:42.840 # +elected-leader master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.841 # +failover-state-select-slave master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.926 # +selected-slave slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.926 * +failover-state-send-slaveof-noone slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:42.979 * +failover-state-wait-promotion slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:43.256 # +promoted-slave slave 127.0.0.1:6381 127.0.0.1 6381 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:43.256 # +failover-state-reconf-slaves master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:43.313 * +slave-reconf-sent slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:43.922 # -odown master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:44.278 * +slave-reconf-inprog slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:44.278 * +slave-reconf-done slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:44.341 # +failover-end master myredis 127.0.0.1 6380
+16167:X 04 Jul 2021 14:38:44.341 # +switch-master myredis 127.0.0.1 6380 127.0.0.1 6381
+16167:X 04 Jul 2021 14:38:44.341 * +slave slave 127.0.0.1:6379 127.0.0.1 6379 @ myredis 127.0.0.1 6381
+16167:X 04 Jul 2021 14:38:44.341 * +slave slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6381
+16167:X 04 Jul 2021 14:39:14.363 # +sdown slave 127.0.0.1:6380 127.0.0.1 6380 @ myredis 127.0.0.1 6381

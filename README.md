@@ -223,7 +223,123 @@ $9
 xianglong
 [root@localhost bin]# 
 ```
+
+### 发布订阅
+![avatar](./src/main/resources/static/发布订阅.jpg)
+    适用场景：1、聊天系统
+            2、关注订阅系统
+
+```bash
+-- bash1 ---
+xianglong@123 ~ % redis-cli -h 172.16.116.139 -p 6379
+172.16.116.139:6379> SUBSCRIBE xianglong
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "xianglong"
+3) (integer) 1
+1) "message"
+2) "xianglong"
+3) "xl"
+
+-- bash2 ---
+172.16.116.139:6379> publish xianglong "xl"
+(integer) 1
+
+```
+
+### 主从复制
+    优点：比单节点性能高，解放读性能
+    缺点：master宕机，写节点缺失
+    如果主机断开，我们可以使用"SLAVEOF no one" 让自己变成主机
+```bash
+172.16.116.139:6379> info replication
+# Replication
+role:master
+connected_slaves:0
+master_replid:e44d3d76978a10e85e613d64dcd24865484fdf07
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:0
+second_repl_offset:-1
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+```
+
+```bash
+[root@localhost bin]# ps -ef | grep redis
+root      10703      1  0 12:54 ?        00:00:00 ./redis-server 0.0.0.0:6379
+root      10776      1  0 12:55 ?        00:00:00 ./redis-server 0.0.0.0:6380
+root      10848      1  0 12:56 ?        00:00:00 ./redis-server 0.0.0.0:6381
+root      10895   7401  0 12:57 pts/2    00:00:00 grep --color=auto redis
+```
+
+== 搭建主从 slaveof 127.0.0.1 6379 ==
+## 命令
+```bash
+--- bash80 ---
+127.0.0.1:6380> info replication
+# Replication
+role:master
+connected_slaves:0
+master_replid:9568e5fcc2678f819edf03e75e83ea3e7ac59398
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:0
+second_repl_offset:-1
+repl_backlog_active:0
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:0
+repl_backlog_histlen:0
+127.0.0.1:6380> slaveof 127.0.0.1 6379
+OK
+127.0.0.1:6380> info replication
+# Replication
+role:slave
+master_host:127.0.0.1
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:1
+master_sync_in_progress:0
+slave_repl_offset:14
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:bcec0eb793fca0328952f0b5ae6b797059252488
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:14
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:14
+127.0.0.1:6380> 
+```
+
+## 配置
+    在启动的配置文件中，配置如下即可永久认 127.0.0.1:6379为主节点
+```bash
+# replicaof <masterip> <masterport>
+replicaof 127.0.0.1 6379
+```
+
+## redis缓存删除策略
+    1.volatile-lru(least recently used):最近最少使用算法，从设置了过期时间的键中选择空转时间最长的键值对清除掉；
+    2.volatile-lfu(least frequently used):最近最不经常使用算法，从设置了过期时间的键中选择某段时间之内使用频次最小的键值对清除掉；
+    3.volatile-ttl:从设置了过期时间的键中选择过期时间最早的键值对清除；
+    4.volatile-random:从设置了过期时间的键中，随机选择键进行清除；
+    5.allkeys-lru:最近最少使用算法，从所有的键中选择空转时间最长的键值对清除；
+    6.allkeys-lfu:最近最不经常使用算法，从所有的键中选择某段时间之内使用频次最少的键值对清除；
+    7.allkeys-random:所有的键中，随机选择键进行删除；
+    8.noeviction:不做任何的清理工作，在redis的内存超过限制之后，所有的写入操作都会返回错误；但是读操作都能正常的进行;
     
+[主从配置79](./src/main/resources/static/conf/cluster/redis79.conf)        
+[主从配置80](./src/main/resources/static/conf/cluster/redis80.conf)        
+[主从配置81](./src/main/resources/static/conf/cluster/redis81.conf)        
+[主从启动sh](./src/main/resources/static/conf/cluster/cluster_start.sh)
+        
+[哨兵配置80](./src/main/resources/static/conf/sentinel/sentinel80.conf)        
+[哨兵配置81](./src/main/resources/static/conf/sentinel/sentinel81.conf)        
+[哨兵集群启动sh](./src/main/resources/static/conf/sentinel/sentinel_start.sh)        
 
 [redis序列化和反序列化](./src/main/java/com/cas/config/RedisConfig.java)
 [swagger配置](./src/main/java/com/cas/config/Swagger2Config.java)
