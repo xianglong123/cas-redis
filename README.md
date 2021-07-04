@@ -341,8 +341,8 @@ replicaof 127.0.0.1 6379
 [哨兵配置81](./src/main/resources/static/conf/sentinel/sentinel81.conf)        
 [哨兵集群启动sh](./src/main/resources/static/conf/sentinel/sentinel_start.sh)        
 
-[redis序列化和反序列化](./src/main/java/com/cas/config/RedisConfig.java)
-[swagger配置](./src/main/java/com/cas/config/Swagger2Config.java)
-[redis注入自定义RedisTemplate](./src/main/java/com/cas/config/RedisConfig.java)
+[redis序列化和反序列化](./src/main/java/com/cas/config/RedisConfig.java)   
+[swagger配置](./src/main/java/com/cas/config/Swagger2Config.java)   
+[redis注入自定义RedisTemplate](./src/main/java/com/cas/config/RedisConfig.java)   
 
 [我的书签](./src/main/resources/static/bookmarks_2021_7_2.html)
