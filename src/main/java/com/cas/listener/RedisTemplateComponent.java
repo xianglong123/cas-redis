@@ -3,6 +3,7 @@ package com.cas.listener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -13,6 +14,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: xianglong[1391086179@qq.com]
@@ -99,7 +102,7 @@ public class RedisTemplateComponent {
 //    @Bean(name = "redisCacheManager")
 //    public RedisCacheManager initRedisCacheManager() {
 //        // Redis 加锁的写入器
-//        RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
+//        RedisCacheManager redisCacheManager = new RedisCacheManager(connectionFactory);
 //        //默认超时时间，单位秒
 //        redisCacheManager.setDefaultExpiration(60);
 //        //缓存超时时间Map，key为cacheName，value为超时,单位是秒

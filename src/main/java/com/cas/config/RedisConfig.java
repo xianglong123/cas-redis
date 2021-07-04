@@ -1,18 +1,23 @@
 package com.cas.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
-import redis.clients.jedis.JedisPoolConfig;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+
+import java.time.Duration;
 
 /**
  * @author: xianglong[1391086179@qq.com]
  * @date: 19:33 2020-02-16
  * @version: V1.0
  * @review: 依赖注入 RedisTemplate 暂时失效
+ * springboot 2.0.X 之后redis集成底层用的 Lettuce
  */
 @Configuration
 public class RedisConfig {
@@ -25,16 +30,29 @@ public class RedisConfig {
             return this.redisConnectionFactory;
         }
 
-        JedisPoolConfig poolConfig = new JedisPoolConfig();
-        //最大空闲数
-        poolConfig.setMaxIdle(30);
-        //最大连接数
-        poolConfig.setMaxTotal(50);
-        //最大等待毫秒数
-        poolConfig.setMaxWaitMillis(2000);
+        //redis配置
+        RedisStandaloneConfiguration redisConfiguration = new
+                RedisStandaloneConfiguration("127.0.0.1",6379);
+        redisConfiguration.setDatabase(0);
+
+        //连接池配置
+        GenericObjectPoolConfig genericObjectPoolConfig =
+                new GenericObjectPoolConfig();
+        genericObjectPoolConfig.setMaxIdle(8);
+        genericObjectPoolConfig.setMinIdle(0);
+        genericObjectPoolConfig.setMaxTotal(8);
+        genericObjectPoolConfig.setMaxWaitMillis(2000);
+
+        LettucePoolingClientConfiguration.LettucePoolingClientConfigurationBuilder builder=
+                LettucePoolingClientConfiguration.builder().commandTimeout(Duration.ofMillis(2000));
+        builder.poolConfig(genericObjectPoolConfig);
+        builder.shutdownTimeout(Duration.ofMillis(2000));
+        LettucePoolingClientConfiguration lettucePoolingClientConfiguration = builder.build();
+
         //创建 Jedis 连接工厂
-        JedisConnectionFactory connectionFactory = new JedisConnectionFactory(poolConfig);
-        this.redisConnectionFactory = connectionFactory;
+        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisConfiguration, lettucePoolingClientConfiguration);
+        lettuceConnectionFactory.afterPropertiesSet();
+        this.redisConnectionFactory = lettuceConnectionFactory;
         return redisConnectionFactory;
     }
 
