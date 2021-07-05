@@ -1,15 +1,10 @@
 server:
   port: 9003
-spring:
-  session:
-    redis:
-      flush-mode: on_save
-      namespace: session.example
-      cleanup-cron: 0 * * * * *
-    store-type: redis # session存储在redis中
-    timeout: 1800
-  redis:
-    timeout: 2000
-    host: 127.0.0.1
-    port: 6379
-    database: 0
+#spring:
+#  session:
+#    redis:
+#      flush-mode: on_save
+#      namespace: session.example
+#      cleanup-cron: 0 * * * * *
+#    store-type: redis # session存储在redis中
+#    timeout: 1800

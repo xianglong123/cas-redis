@@ -14,7 +14,7 @@ public class Base {
         pool.setMaxTotal(100); // 设置最大连接数
         pool.setMaxIdle(10); // 最大空闲连接数
         // 实例化连接池
-        return new JedisPool(pool, "127.0.0.1", 6379);
+        return new JedisPool(pool, "172.16.116.139", 6381);
     }
 
 

@@ -1,0 +1,11 @@
+spring:
+  redis:
+    lettuce:
+      pool:
+        max-idle: 8
+        max-active: 8
+        max-wait: 2000
+        min-idle: 0
+    sentinel:
+      master: myredis
+      nodes: 172.16.116.139:26380,172.16.116.139:26381

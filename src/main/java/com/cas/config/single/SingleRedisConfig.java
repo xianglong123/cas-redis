@@ -1,14 +1,14 @@
-package com.cas.config;
+package com.cas.config.single;
 
+import com.cas.config.ObjectRedisSerializer;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 import java.time.Duration;
 
@@ -18,9 +18,11 @@ import java.time.Duration;
  * @version: V1.0
  * @review: 依赖注入 RedisTemplate 暂时失效
  * springboot 2.0.X 之后redis集成底层用的 Lettuce
+ *
+ * 这里测试的是单机本地自定义RedisTemplate，环境为dev时候打开@Configuration
  */
 @Configuration
-public class RedisConfig {
+public class SingleRedisConfig {
 
     private RedisConnectionFactory redisConnectionFactory = null;
 
@@ -51,7 +53,7 @@ public class RedisConfig {
 
         //创建 Jedis 连接工厂
         LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisConfiguration, lettucePoolingClientConfiguration);
-        lettuceConnectionFactory.afterPropertiesSet();
+//        lettuceConnectionFactory.afterPropertiesSet();
         this.redisConnectionFactory = lettuceConnectionFactory;
         return redisConnectionFactory;
     }

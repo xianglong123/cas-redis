@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisController {
 
 
-    @Autowired
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     @Resource

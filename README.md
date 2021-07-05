@@ -331,6 +331,25 @@ replicaof 127.0.0.1 6379
     6.allkeys-lfu:最近最不经常使用算法，从所有的键中选择某段时间之内使用频次最少的键值对清除；
     7.allkeys-random:所有的键中，随机选择键进行删除；
     8.noeviction:不做任何的清理工作，在redis的内存超过限制之后，所有的写入操作都会返回错误；但是读操作都能正常的进行;
+
+## sentinel配置
+```bash
+daemonize yes 
+port 7505
+#指定工作目录
+dir "/usr/local/redis-sentinel/7505"
+logfile "./sentinel.log" 
+#指定别名  主节点地址  端口  哨兵个数（有几个哨兵监控到主节点宕机执行转移）
+sentinel monitor mymaster 127.0.0.1 7501 2
+#如果哨兵3s内没有收到主节点的心跳，哨兵就认为主节点宕机了，默认是30秒  
+sentinel down-after-milliseconds mymaster 3000
+#选举出新的主节点之后，可以同时连接从节点的个数
+sentinel parallel-syncs mymaster 1
+#如果10秒后,master仍没活过来，则启动failover,默认180s  
+sentinel failover-timeout mymaster 10000 
+#配置连接redis主节点密码  
+sentinel auth-pass mymaster 123456
+```    
     
 [主从配置79](./src/main/resources/static/conf/cluster/redis79.conf)        
 [主从配置80](./src/main/resources/static/conf/cluster/redis80.conf)        
