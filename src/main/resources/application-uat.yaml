@@ -9,3 +9,5 @@ spring:
     sentinel:
       master: myredis
       nodes: 172.16.116.139:26380,172.16.116.139:26381
+
+# lettuce  读音：`ledes` [来嘚丝]
