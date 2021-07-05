@@ -32,12 +32,11 @@ dependencies {
 
     implementation 'org.apache.commons:commons-pool2:2.9.0'
 
+    // 布隆过滤器
+    implementation 'com.google.guava:guava:28.0-jre'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'redis.clients:jedis'
-
-
-
-
 }
 
 test {
