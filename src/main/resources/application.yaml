@@ -8,3 +8,5 @@ spring:
       cleanup-cron: 0 * * * * *
     store-type: redis # session存储在redis中
     timeout: 1800
+logging:
+  config: classpath:logback-spring.xml

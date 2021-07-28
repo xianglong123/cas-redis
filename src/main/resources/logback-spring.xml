@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<include resource="org/springframework/boot/logging/logback/defaults/xml"/>
+
+	<springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+	<property name="LOG_FILE" value="${BUILD_FOLDER:-build}/${springAppName}"/>
+
+	<property name="CONSOLE_LOG_PATTERN" value="%date{yyyy-MM-dd HH:mm:ss} | %X{trace_uuid} |%highlight(%-5level) | %boldYellow(%thread) | %boldGreen(%logger) | %msg%n"/>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>172.16.116.152:4560</destination>
+		<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="console"/>
+		<appender-ref ref="logstash"/>
+	</root>
+
+	<logger name="com.cas" level="INFO">
+		<appender-ref ref="logstash"/>
+	</logger>
+
+</configuration>

@@ -37,6 +37,9 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'redis.clients:jedis'
+
+    // logstash
+    implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
 }
 
 test {
