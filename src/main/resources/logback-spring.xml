@@ -24,7 +24,7 @@
 		<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
 	</appender>
 
-	<root level="DEBUG">
+	<root level="INFO">
 		<appender-ref ref="console"/>
 		<appender-ref ref="logstash"/>
 	</root>
