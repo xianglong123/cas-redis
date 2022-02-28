@@ -392,3 +392,10 @@ sentinel auth-pass mymaster 123456
 
 [布隆过滤器讲解](https://juejin.cn/post/6844904007790673933)   
 [我的书签](./src/main/resources/static/bookmarks_2021_7_2.html)
+
+
+
+### 如何保证redis和mysql数据一致性
+    孤独烟：https://www.cnblogs.com/rjzheng/p/9041659.html
+    ktoking：https://blog.csdn.net/kingtok/article/details/106689121  延迟双删 + biglog日志订阅
+    呆东：https://blog.csdn.net/huxiaodong1994/article/details/102906696  biglog日志
